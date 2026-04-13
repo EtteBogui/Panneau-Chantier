@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panneau de chantier - GAIA</title>
+
+  <style>
+    :root {
+      --blue: #003b49;
+      --blue-light: #0d5562;
+      --green: #97c21f;
+      --green-dark: #7ea518;
+      --bg: #f4f7f8;
+      --card: #ffffff;
+      --text: #1f1f1f;
+      --muted: #5f6b70;
+      --line: #e3e8ea;
+      --shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #eef2f3, var(--bg));
+      color: var(--text);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      color: white;
+      padding: 34px 20px 30px;
+      text-align: center;
+    }
+
+    .logo {
+      height: 78px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      max-width: 100%;
+    }
+
+    header h1 {
+      margin: 10px 0 12px;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      color: white;
+      text-align: center;
+      font-weight: 500;
+      font-size: 1rem;
+      margin: 0;
+      opacity: 0.95;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 28px auto;
+      padding: 0 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      color: var(--blue);
+      text-align: center;
+      margin: 0 0 8px;
+      font-size: 1.6rem;
+    }
+
+    .underline {
+      width: 64px;
+      height: 4px;
+      background: var(--green);
+      margin: 0 auto 22px;
+      border-radius: 999px;
+    }
+
+    p {
+      line-height: 1.75;
+      color: #40484b;
+      text-align: justify;
+      margin: 0 0 16px;
+    }
+
+    .table-shell {
+      background: #f9fbfb;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    thead th {
+      background: var(--green);
+      color: var(--blue);
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 0.96rem;
+      font-weight: 700;
+      border-bottom: 2px solid #88b11d;
+    }
+
+    tbody td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      font-size: 0.96rem;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #fbfcfc;
+    }
+
+    tbody tr:hover {
+      background: #f1f7e6;
+      transition: background 0.2s ease;
+    }
+
+    tbody td:first-child {
+      font-weight: 700;
+      color: var(--blue);
+      width: 28%;
+    }
+
+    tbody td:nth-child(2) {
+      width: 28%;
+    }
+
+    tbody td:nth-child(3) {
+      color: var(--muted);
+      width: 44%;
+    }
+
+    .table-note {
+      margin-top: 12px;
+      font-size: 0.92rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-block;
+      min-width: 280px;
+      margin: 28px auto 0;
+      padding: 14px 18px;
+      text-align: center;
+      background: var(--green);
+      color: var(--blue);
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.25s ease;
+      box-shadow: 0 6px 14px rgba(151, 194, 31, 0.28);
+    }
+
+    .btn:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-wrap {
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px 20px 28px;
+      color: #667276;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 28px 16px 24px;
+      }
+
+      .logo {
+        height: 60px;
+      }
+
+      .subtitle {
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .container {
+        padding: 0 12px;
+        margin: 18px auto;
+      }
+
+      .card {
+        padding: 20px 16px;
+        border-radius: 14px;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      p {
+        text-align: left;
+        font-size: 0.97rem;
+      }
+
+      .table-shell {
+        padding: 8px;
+      }
+
+      table {
+        min-width: 640px;
+      }
+
+      thead th,
+      tbody td {
+        padding: 12px 12px;
+        font-size: 0.92rem;
+      }
+
+      .btn {
+        min-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.55rem;
+      }
+
+      .logo {
+        height: 54px;
+      }
+
+      .card {
+        padding: 18px 14px;
+      }
+
+      .table-note {
+        font-size: 0.88rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <img class="logo" src="logo.jpg" alt="Bouygues Immobilier">
+
+  <h1>Panneau de chantier GAIA </h1>
+
+  <p class="subtitle">
+    81 Avenue du Général de Gaulle, 68300 Saint-Louis
+  </p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Présentation du projet</h2>
+    <div class="underline"></div>
+
+    <p>
+      Bouygues Immobilier réalise une opération immobilière située au
+      <strong>81 Avenue du Général de Gaulle à Saint-Louis (68300)</strong>.
+      Ce projet comprend la construction de <strong>9 bâtiments en R+1 avec combles</strong>,
+      répartis en <strong>14 cages d’escaliers</strong>, pour un total de
+      <strong>170 logements</strong>.
+    </p>
+
+    <p>
+      L’opération intègre également la réalisation d’un
+      <strong>parc de stationnement</strong> ainsi que de
+      <strong>24 maisons préfabriquées en bois</strong>, dans une logique
+      de qualité architecturale et de développement durable.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Entreprises intervenantes</h2>
+    <div class="underline"></div>
+
+    <div class="table-shell">
+      <table>
+        <thead>
+          <tr>
+            <th>Lot</th>
+            <th>Entreprise</th>
+            <th>Localisation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Renforcement des sols</td><td>Menard SAS</td><td>Orsay</td></tr>
+          <tr><td>Gros œuvre</td><td>Armindo Joaquim</td><td>Sainte-Croix-en-Plaine</td></tr>
+          <tr><td>Étanchéité</td><td>Schoenenberger</td><td>Colmar</td></tr>
+          <tr><td>Menuiseries ext.</td><td>Les Zelles</td><td>La Bresse</td></tr>
+          <tr><td>Menuiseries int.</td><td>Beyer Menuiserie</td><td>Erstein</td></tr>
+          <tr><td>Menuiseries int.</td><td>Kleim Menuiserie</td><td>Krautergersheim</td></tr>
+          <tr><td>Charpente</td><td>Arkedia</td><td>Turckheim</td></tr>
+          <tr><td>Serrurerie</td><td>Riess</td><td>Colmar</td></tr>
+          <tr><td>CVC</td><td>Stallini</td><td>Mulhouse</td></tr>
+          <tr><td>Électricité</td><td>Werner</td><td>Staffelfelden</td></tr>
+          <tr><td>Ravalement</td><td>Isol Paint</td><td>Sausheim</td></tr>
+          <tr><td>Espaces verts</td><td>ID Verde</td><td>Courbevoie</td></tr>
+          <tr><td>VRD</td><td>Alter TP</td><td>Colmar</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    
+
+    <div class="btn-wrap">
+      <a class="btn" href="Panneaux%20de%20chantier_BADER.pdf" target="_blank">
+        📄 Ouvrir le panneau PDF
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Accès via QR code – Chantier digitalisé
+</footer>
+
+</body>
+</html>
